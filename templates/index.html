@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ameya Hatekar | 3D Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div id="preloader">
+        <div class="glitch-wrapper">
+            <div class="glitch" data-text="INITIALIZING...">INITIALIZING...</div>
+        </div>
+    </div>
+
+    <div class="top-controls">
+        <button id="theme-toggle" class="control-btn"><i class="fa-solid fa-sun"></i> Light Mode</button>
+        <button id="mute-btn" class="control-btn"><i class="fa-solid fa-volume-high"></i></button>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.3">
+    </div>
+
+    <div id="custom-cursor"></div>
+    <div id="cursor-light"></div>
+
+    <canvas id="webgl-canvas"></canvas>
+
+    <main id="app-container">
+        <section id="hero" class="section-fullscreen anti-gravity">
+            <div class="hero-content">
+                <h1 class="glow-text title-font">Welcome to <br/><span class="primary-text">Ameya Hatekar Portfolio</span></h1>
+                <h2 class="typewriter sub-headline">Defying Gravity through Code and Art. Welcome to my creative dimension.</h2>
+                <p class="about-me">
+                   I’m a passionate Game Developer crafting immersive digital experiences through cutting-edge technologies and interactive 3D worlds. Blending creativity with innovation, I build next-generation experiences that push the boundaries of gaming and the web.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="cyber-btn">EXPLORE ARSENAL</a>
+                    <a href="https://drive.google.com/file/d/12h-qO3FHBnIM3UYxt8Ur3BGYeAsUB65X/view?usp=drive_link" target="_blank" class="cyber-btn">RESUME</a>
+                </div>
+            </div>
+            <div class="hero-3d" id="hero-3d-container"></div>
+        </section>
+
+        <section id="projects" class="section-padding">
+            <h2 class="section-title glow-text title-font">Projects</h2>
+            <div class="projects-grid">
+                
+                <a href="https://ameyhatekarin.itch.io/operation-dead-silance" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="project-container reveal-up anti-gravity">
+                        <div class="project-flipper">
+                            <div class="project-front border-wrap" style="--spin-speed: 3.5s; --spin-delay: 0s;">
+                                <div class="border-inner">
+                                    <h3>Operation Dead Silence</h3>
+                                    <p class="primary-text">Engine: Unreal Engine</p>
+                                    <p>Enter a dangerous battlefield where every move counts. Your mission is to find a hidden hard drive marked by a flag inside enemy territory. Fight armed enemies, secure the data, and survive.</p>
+                                </div>
+                            </div>
+                            <div class="project-back border-wrap" style="--spin-speed: 3.5s; --spin-delay: 0s;">
+                                <div class="border-inner" style="padding: 10px;">
+                                    <img src="{{ url_for('static', filename='images/deadsilence.png') }}" alt="Dead Silence" class="project-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://ameyhatekarin.itch.io/jumpquest" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="project-container reveal-up anti-gravity">
+                        <div class="project-flipper">
+                            <div class="project-front border-wrap" style="--spin-speed: 2.8s; --spin-delay: -1.2s;">
+                                <div class="border-inner">
+                                    <h3>Jump Quest</h3>
+                                    <p class="primary-text">Engine: Unreal Engine</p>
+                                    <p>A dynamic 2.5D prototype game where the main character jumps across various objects, evades unique creatures, explores breathtaking new environments, and learns new mechanics.</p>
+                                </div>
+                            </div>
+                            <div class="project-back border-wrap" style="--spin-speed: 2.8s; --spin-delay: -1.2s;">
+                                <div class="border-inner" style="padding: 10px;">
+                                    <img src="{{ url_for('static', filename='images/jumpquest.png') }}" alt="Jump Quest" class="project-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://ameyhatekarin.itch.io/lost-in-voids" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="project-container reveal-up anti-gravity">
+                        <div class="project-flipper">
+                            <div class="project-front border-wrap" style="--spin-speed: 4.2s; --spin-delay: -0.5s;">
+                                <div class="border-inner">
+                                    <h3>Lost in Voids</h3>
+                                    <p class="primary-text">Engine: Unity (6-hour Game Jam)</p>
+                                    <p>The game follows the journey of Ethan, who finds himself lost within the surreal landscapes of his own dream world. Trapped in an endless loop, Ethan must navigate his subconscious.</p>
+                                </div>
+                            </div>
+                            <div class="project-back border-wrap" style="--spin-speed: 4.2s; --spin-delay: -0.5s;">
+                                <div class="border-inner" style="padding: 10px;">
+                                    <img src="{{ url_for('static', filename='images/lostvoids.png') }}" alt="Lost in Voids" class="project-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="project-container reveal-up anti-gravity">
+                        <div class="project-flipper">
+                            <div class="project-front border-wrap" style="--spin-speed: 3.1s; --spin-delay: -2s;">
+                                <div class="border-inner">
+                                    <h3>Temporary <span class="badge" style="font-size:12px; background:var(--primary-color); padding:2px 5px; border-radius:5px; color:#fff;">WIP</span></h3>
+                                    <p class="primary-text">Platform: Android (Unity)</p>
+                                    <p>An endless runner featuring entirely new user experiences and unique dynamic moves.</p>
+                                </div>
+                            </div>
+                            <div class="project-back border-wrap" style="--spin-speed: 3.1s; --spin-delay: -2s;">
+                                <div class="border-inner" style="padding: 10px;">
+                                    <img src="{{ url_for('static', filename='images/temporary.png') }}" alt="Temporary" class="project-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.artstation.com/artwork/0lKR9G" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="project-container reveal-up anti-gravity">
+                        <div class="project-flipper">
+                            <div class="project-front border-wrap" style="--spin-speed: 4.5s; --spin-delay: -1.8s;">
+                                <div class="border-inner">
+                                    <h3>Shadow Knight vs Khaimera</h3>
+                                    <p class="primary-text">Tools: Unreal Engine 5, Maya, Substance Painter</p>
+                                    <p>Environmental Cinematic Shots.</p>
+                                </div>
+                            </div>
+                            <div class="project-back border-wrap" style="--spin-speed: 4.5s; --spin-delay: -1.8s;">
+                                <div class="border-inner" style="padding: 10px;">
+                                    <img src="{{ url_for('static', filename='images/shadowimage.png') }}" alt="Shadow Knight" class="project-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.artstation.com/artwork/JrbPqD" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="project-container reveal-up anti-gravity">
+                        <div class="project-flipper">
+                            <div class="project-front border-wrap" style="--spin-speed: 3.8s; --spin-delay: -0.9s;">
+                                <div class="border-inner">
+                                    <h3>Lost Horizon</h3>
+                                    <p class="primary-text">Tools: Blender, Unreal Engine 5</p>
+                                    <p>Lost Horizon is a personal Unreal Engine 5 project inspired by *Star Wars*, created to practice cinematography, environment design, and Metahuman workflow.</p>
+                                </div>
+                            </div>
+                            <div class="project-back border-wrap" style="--spin-speed: 3.8s; --spin-delay: -0.9s;">
+                                <div class="border-inner" style="padding: 10px;">
+                                    <img src="{{ url_for('static', filename='images/losthorizon.png') }}" alt="Lost Horizon" class="project-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="view-more-container reveal-up">
+                <a href="https://www.artstation.com/ameyhatekar" target="_blank" class="cyber-btn">VIEW MORE PROJECTS</a>
+            </div>
+        </section>
+
+        <section id="skills" class="section-padding">
+            <h2 class="section-title glow-text title-font">Skills & Arsenal</h2>
+            <div class="skills-grid">
+                <div class="skill-card anti-gravity" data-score="75">
+                    <div class="skill-front"><i class="fa-solid fa-gamepad icon-logo"></i><h3>Unreal Engine</h3></div>
+                    <div class="skill-back">
+                        <div class="circular-progress"><svg class="progress-ring" width="100" height="100"><circle class="progress-ring__circle" stroke="#d16bff" stroke-width="8" fill="transparent" r="40" cx="50" cy="50"/></svg><div class="progress-value">75%</div></div>
+                        <p>Blueprints, level design, lighting</p>
+                    </div>
+                </div>
+                <div class="skill-card anti-gravity" data-score="80">
+                    <div class="skill-front"><i class="fa-brands fa-unity icon-logo"></i><h3>Unity Engine</h3></div>
+                    <div class="skill-back">
+                        <div class="circular-progress"><svg class="progress-ring" width="100" height="100"><circle class="progress-ring__circle" stroke="#d16bff" stroke-width="8" fill="transparent" r="40" cx="50" cy="50"/></svg><div class="progress-value">80%</div></div>
+                        <p>C# scripting, 2.5D/3D mechanics</p>
+                    </div>
+                </div>
+                <div class="skill-card anti-gravity" data-score="80">
+                    <div class="skill-front"><i class="fa-solid fa-cube icon-logo"></i><h3>Maya</h3></div>
+                    <div class="skill-back">
+                        <div class="circular-progress"><svg class="progress-ring" width="100" height="100"><circle class="progress-ring__circle" stroke="#d16bff" stroke-width="8" fill="transparent" r="40" cx="50" cy="50"/></svg><div class="progress-value">80%</div></div>
+                        <p>3D modeling, UV mapping</p>
+                    </div>
+                </div>
+                <div class="skill-card anti-gravity" data-score="70">
+                    <div class="skill-front"><i class="fa-brands fa-hubspot icon-logo"></i><h3>Blender</h3></div>
+                    <div class="skill-back">
+                        <div class="circular-progress"><svg class="progress-ring" width="100" height="100"><circle class="progress-ring__circle" stroke="#d16bff" stroke-width="8" fill="transparent" r="40" cx="50" cy="50"/></svg><div class="progress-value">70%</div></div>
+                        <p>Asset creation, environments</p>
+                    </div>
+                </div>
+                <div class="skill-card anti-gravity" data-score="70">
+                    <div class="skill-front"><i class="fa-solid fa-paintbrush icon-logo"></i><h3>Substance Painter</h3></div>
+                    <div class="skill-back">
+                        <div class="circular-progress"><svg class="progress-ring" width="100" height="100"><circle class="progress-ring__circle" stroke="#d16bff" stroke-width="8" fill="transparent" r="40" cx="50" cy="50"/></svg><div class="progress-value">70%</div></div>
+                        <p>Texturing, material creation</p>
+                    </div>
+                </div>
+                <div class="skill-card anti-gravity" data-score="60">
+                    <div class="skill-front"><i class="fa-solid fa-video icon-logo"></i><h3>Premiere Pro</h3></div>
+                    <div class="skill-back">
+                        <div class="circular-progress"><svg class="progress-ring" width="100" height="100"><circle class="progress-ring__circle" stroke="#d16bff" stroke-width="8" fill="transparent" r="40" cx="50" cy="50"/></svg><div class="progress-value">60%</div></div>
+                        <p>Video editing, pacing</p>
+                    </div>
+                </div>
+                <div class="skill-card anti-gravity" data-score="60">
+                    <div class="skill-front"><i class="fa-solid fa-wand-magic-sparkles icon-logo"></i><h3>After Effects</h3></div>
+                    <div class="skill-back">
+                        <div class="circular-progress"><svg class="progress-ring" width="100" height="100"><circle class="progress-ring__circle" stroke="#d16bff" stroke-width="8" fill="transparent" r="40" cx="50" cy="50"/></svg><div class="progress-value">60%</div></div>
+                        <p>VFX, motion graphics</p>
+                    </div>
+                </div>
+                <div class="skill-card anti-gravity" data-score="90">
+                    <div class="skill-front"><i class="fa-solid fa-code icon-logo"></i><h3>Programming</h3></div>
+                    <div class="skill-back">
+                        <div class="circular-progress"><svg class="progress-ring" width="100" height="100"><circle class="progress-ring__circle" stroke="#d16bff" stroke-width="8" fill="transparent" r="40" cx="50" cy="50"/></svg><div class="progress-value">90%</div></div>
+                        <p>C++, C#, Python, JS</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section-padding">
+            <h2 class="section-title glow-text title-font">Work Experience</h2>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-dot"></div>
+                    <div class="border-wrap anti-gravity" style="--spin-speed: 4s; --spin-delay: -1s;">
+                        <div class="border-inner">
+                            <h3>QA Game Tester</h3>
+                            <h4>Highbrow Technology Inc.</h4>
+                            <p>Tested and documented bugs for high-profile game releases, ensuring optimal user experience and seamless gameplay.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-dot"></div>
+                    <div class="border-wrap anti-gravity" style="--spin-speed: 3.2s; --spin-delay: 0.5s;">
+                        <div class="border-inner">
+                            <h3>3D Artist</h3>
+                            <h4>RNH Tech Group</h4>
+                            <p>Created detailed 3D models, textures, and assets for interactive experiences, optimizing meshes for real-time rendering engines.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding">
+            <h2 class="section-title glow-text title-font">Initialize Connection</h2>
+            <div class="socials-container">
+                <a href="https://www.linkedin.com/in/ameyhatekar/" target="_blank" class="social-icon" data-title="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.artstation.com/ameyhatekar" target="_blank" class="social-icon" data-title="ArtStation">
+                    <i class="fa-brands fa-artstation"></i>
+                </a>
+                <a href="https://x.com/your_handle" target="_blank" class="social-icon" data-title="X (Twitter)">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="#" class="social-icon" data-title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+            <p class="footer-text">© 2026 Ameya Hatekar. Defying Gravity.</p>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
